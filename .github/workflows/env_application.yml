@@ -2,8 +2,8 @@ name: Deploying application based on environment
 
 on:
   push:
-    branches: 
-     - main
+    branches:
+      - main
 
 jobs:
   env_deployment:
@@ -11,12 +11,12 @@ jobs:
 
     strategy:
       matrix:
-      environement:
-        - dev
-        - qa
-        - prod
-      include:
-        - environment: dev
+        environment:
+          - dev
+          - qa
+          - prod
+        include:
+          - environment: dev
             app_url: dev.dim.com
           - environment: qa
             app_url: qa.dim.com
