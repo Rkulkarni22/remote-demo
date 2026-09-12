@@ -1,4 +1,4 @@
-name: Deployment with multiple environments
+name: Rolling update with multiple environments
 
 on:
   push:
@@ -10,11 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      max-parallel: 1 
       matrix:
         environment:
-          - dev
-          - qa 
-          - prod
+          - server1
+          - server2 
+          - server3
     steps:
        - name: Deployment to different environment
          run:  echo "Deploying to ${{ matrix.environment }}"
