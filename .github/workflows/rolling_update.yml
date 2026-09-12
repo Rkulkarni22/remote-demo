@@ -1,7 +1,7 @@
 name: Rolling update with multiple environments
 
 on:
-  push:
+  pull_request: :
       branches: 
         - main
 
