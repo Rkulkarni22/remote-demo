@@ -2,7 +2,7 @@ name: Deploying application based on environment
 
 on:
   pull_request: 
-  push:
+  
     branches:
       - main
 
