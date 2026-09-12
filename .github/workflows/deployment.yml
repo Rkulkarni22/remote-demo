@@ -1,8 +1,8 @@
 name: Deployment with multiple environments
 
 on:
-  pull_request: 
-  push:
+  pull_request:
+
       branches: 
         - main
 
