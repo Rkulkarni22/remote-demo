@@ -2,7 +2,7 @@ name: Artifacts upload pipeline
 
 on:
   push:
-    branches: 
+    branches:
       - main
 
 jobs:
@@ -10,11 +10,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name:  Create application file
+      - name: Create application file
         run: echo "This is the testing code" > app.js
 
-      - name: upload the artifact
+      - name: Upload the artifact
         uses: actions/upload-artifact@v4
         with:
           name: application-artifact
           path: app.js
+          
+          
