@@ -32,15 +32,15 @@ jobs:
 
     steps:
       - name: Checkout Source Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup .NET SDK ${{ env.DOTNET_VERSION }}
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
       - name: Cache NuGet Packages
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.nuget/packages
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj', 'FintechJobPortal.sln') }}
@@ -64,7 +64,7 @@ jobs:
 
       - name: Upload Test Results Artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: unit-test-results
           path: "**/TestResults/*.trx"
@@ -80,10 +80,10 @@ jobs:
 
     steps:
       - name: Checkout Source Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup .NET SDK ${{ env.DOTNET_VERSION }}
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
@@ -95,7 +95,7 @@ jobs:
             /p:UseAppHost=false
 
       - name: Upload Published Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: fintech-job-portal-binaries
           path: ./dist/publish
@@ -111,7 +111,7 @@ jobs:
 
     steps:
       - name: Checkout Source Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -145,7 +145,7 @@ jobs:
 
       - name: Upload Trivy Security Report Artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: trivy-security-report
           path: trivy-security-results.sarif
@@ -161,7 +161,7 @@ jobs:
 
     steps:
       - name: Checkout Source Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
