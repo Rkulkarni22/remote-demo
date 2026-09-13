@@ -1,9 +1,7 @@
 name: Artifacts upload pipeline
 
 on:
-  pull_request: 
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   build:
@@ -17,8 +15,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: application-artifact
-          path: app.js 
-  
+          path: app.js
   deployment:
       needs: build
       runs-on: ubuntu-latest
@@ -26,7 +23,8 @@ jobs:
       steps:
         - name: Download the artifacts
           uses: actions/download-artifact@v4
-          with: 
+          with:
             name: application-artifact
+
         - name: Test the download
           run: cat app.js

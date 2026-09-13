@@ -1,9 +1,7 @@
 name: External Integration
 
 on:
-  pull_request: :
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   external-notification:
@@ -14,5 +12,5 @@ jobs:
         run: |
           curl -X POST \
             -H "Content-Type: application/json" \
-            -d '{"text":"Hello from GitHub Actions! From Rohan 🚀"}' \
-            "${{ secrets.WEBHOOK }}" 
+            -d '{"text":"Hello from GitHub Actions! From Raj 🚀"}' \
+            "${{ secrets.WEBHOOK }}"

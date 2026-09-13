@@ -1,45 +1,22 @@
-name: Production Canary Deployment
+name: Canary Based Deployment
 
 on:
-  pull_request: 
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
-  canary-10:
+  canary:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy 10% traffic
+      - name: Deploy 10% traffic to new version
         run: |
-          echo "Deploying new version to 10% of production traffic"
+          echo "Deploying 10% traffic to new version"
 
-      - name: Monitor 10% deployment
+      - name: Verify the deployment and monitor
         run: |
-          echo "Checking application health, errors and latency"
+          echo "Monitoring application"
+          echo "Checking health and performance"
 
-  canary-50:
-    needs: canary-10
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Increase traffic to 50%
+      - name: Release remaining traffic
         run: |
-          echo "Increasing new version traffic to 50%"
-
-      - name: Monitor 50% deployment
-        run: |
-          echo "Monitoring application metrics"
-
-  production:
-    needs: canary-50
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Release 100% traffic
-        run: |
-          echo "Releasing 100% traffic to new version"
-
-      - name: Verify production deployment
-        run: |
-          echo "Production deployment completed successfully"
+          echo "Releasing remaining 90% traffic"

@@ -1,10 +1,7 @@
 name: Deployment with multiple environments
 
 on:
-  pull_request:
-
-      branches: 
-        - main
+  workflow_dispatch:
 
 jobs:
   Deployment:
@@ -14,8 +11,9 @@ jobs:
       matrix:
         environment:
           - dev
-          - qa 
+          - qa
           - prod
+
     steps:
-       - name: Deployment to different environment
-         run:  echo "Deploying to ${{ matrix.environment }}"
+      - name: Deployment to different environment
+        run: echo "Deploying to ${{ matrix.environment }}"
